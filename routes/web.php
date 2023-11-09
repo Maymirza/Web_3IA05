@@ -1,37 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginC;
-use App\Http\Controllers\Register;
 use App\Http\Controllers\Forgot;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShopListController;
 
 
-Route::get('/', function () {
-    return view('home');
-});
-
-// Route::get('/home', function () {
-//     return view('home', [
-//         "title" => "Home",
-
-//     ]);
+// Route::get('/', function () {
+//     return view('home');
 // });
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/about', function () {
-    return view('about', [
-        "title" => "About",
-        "name" => "Maymirza Faiz Firdaus",
-        "email" => "maymirza040@gmail.com",
-        "Image" => "logocbs.jpg"
-        
-    ]);
+Route::get('/', function(){
+    return view('auth.login');
 });
 
-// Route::get('/login', [LoginC::class, 'index']);
-
-// Route::get('/register', [Register::class, 'index']);
+Route::get('/men', [ShopListController::class, 'index']);
 
 Route::get('/forgot-pw', [Forgot::class, 'forgot']);
 
